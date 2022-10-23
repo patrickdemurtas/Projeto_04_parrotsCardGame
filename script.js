@@ -12,7 +12,21 @@ function numeroDeCartas(){
 numeroDeCartas();
 
 
+let contador = 0;
 
 function virarCarta(cartaClicada){
-    cartaClicada.classList.add('virada');
+    cartaClicada.classList.toggle('virada');
+    contador++;
+
+    if(contador == 2){
+        setTimeout(desvirar, 2000);
+        contador = 0;
+    }
+}
+
+function desvirar(){
+    let cartas = document.querySelectorAll('.virada');
+    for(let i = 0; i < cartas.length; i++){
+        cartas[i].classList.remove('virada');
+    }
 }
