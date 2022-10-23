@@ -1,0 +1,78 @@
+* {
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #eef9bf;
+    
+}
+
+.titulo-jogo{
+    font-family: 'Roboto', sans-serif;
+    font-size: 56px;
+    font-weight: 700;
+    margin-bottom: 46px;
+    display: flex;
+    justify-content: center;
+    height: 103px;
+    align-items: flex-end;
+}
+
+h1{
+    color:#75B79E;
+}
+
+.conteudo{
+    display:flex;
+    width: 872px;
+    height: 350px;
+    
+    
+    margin: 0 auto;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+
+}
+
+.face img{
+    width: 100px;
+    height: 100px;
+}
+
+.carta{
+    
+    height: 146px;
+    width: 117px;
+    position: relative;
+    
+    
+}
+
+.face{
+    width: 100%;
+    height: 100%;
+    background-color: #A7E9AF;
+    border: 1px solid #99CEA8;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.5s;
+    position: absolute;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+
+}
+
+.back-face{
+    transform: rotateY(180deg);
+}
+
+.virada .back-face{
+    transform: rotateY(0deg);
+}
+
+.virada .front-face{
+   transform: rotateY(-180deg); 
+}
