@@ -7,6 +7,12 @@ body{
     
 }
 
+
+    
+
+
+
+
 .titulo-jogo{
     font-family: 'Roboto', sans-serif;
     font-size: 56px;
@@ -15,7 +21,9 @@ body{
     display: flex;
     justify-content: center;
     height: 103px;
+    width: 100%;
     align-items: flex-end;
+   
 }
 
 h1{
@@ -89,13 +97,34 @@ h1{
 
 
 @media (max-width: 335px){
+
+ 
+
     .conteudo{
-        display:flex;
-        flex-direction: column;
+        width: 117px;
+        
     }
 
-    .titulo-jogo{
-        display: flex;
-        justify-content: center;
+    h1{
+       margin-left: 50px;
+       font-size: 36px; 
+        
+    }
+
+   .titulo-jogo{
+    display: flex;
+    justify-content: center;
+    
+    
+    
+   }
+    
+
+    .carta{
+        margin-bottom: 34px;
+    }
+
+    .game{
+        margin-left: 65px;
     }
 }
