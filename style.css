@@ -35,10 +35,8 @@ h1{
 
 }
 
-.face img{
-    width: 100px;
-    height: 100px;
-}
+
+
 
 .carta{
     
@@ -46,6 +44,8 @@ h1{
     width: 117px;
     position: relative;
     
+    transform-style: preserve-3d;
+    transition: all 0.5s;
     
 }
 
@@ -58,21 +58,31 @@ h1{
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.5s;
+    
     position: absolute;
-    backface-visibility: hidden;
-    transform-style: preserve-3d;
+  
 
 }
 
-.back-face{
+.front-face{
+    
+    background-size: 100px 100px;
+    background-repeat: no-repeat;
+    background-position: center;
     transform: rotateY(180deg);
 }
 
-.virada .back-face{
-    transform: rotateY(0deg);
+.back-face{
+    background-image: url('./Imagens/back.png');
+    background-size: 100px 100px;   
+    background-position: center;
+    background-repeat: no-repeat;
+    backface-visibility: hidden;
+    
 }
 
-.virada .front-face{
-   transform: rotateY(-180deg); 
+
+
+.carta:hover {
+    transform: rotateY(180deg);
 }
