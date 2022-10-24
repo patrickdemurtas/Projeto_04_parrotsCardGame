@@ -83,6 +83,19 @@ h1{
 
 
 
-.carta:hover {
+.virar-carta {
     transform: rotateY(180deg);
+}
+
+
+@media (max-width: 335px){
+    .conteudo{
+        display:flex;
+        flex-direction: column;
+    }
+
+    .titulo-jogo{
+        display: flex;
+        justify-content: center;
+    }
 }

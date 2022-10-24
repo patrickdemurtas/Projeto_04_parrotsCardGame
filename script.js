@@ -1,4 +1,6 @@
 let escolhaQuantidade;
+
+
 const conteudo = document.querySelector('.conteudo');
 let arraygif4 = ['bobrossparrot', 'explodyparrot', 'bobrossparrot', 'explodyparrot'];
 let arraygif6 = ['bobrossparrot', 'explodyparrot', 'fiestaparrot', 'bobrossparrot', 'explodyparrot', 'fiestaparrot'];
@@ -6,12 +8,6 @@ let arraygif8 = ['bobrossparrot', 'explodyparrot', 'fiestaparrot', 'metalparrot'
 let arraygif10 = ['bobrossparrot', 'explodyparrot', 'fiestaparrot', 'metalparrot', 'revertitparrot', 'bobrossparrot', 'explodyparrot', 'fiestaparrot', 'metalparrot', 'revertitparrot'];
 let arraygif12 = ['bobrossparrot', 'explodyparrot', 'fiestaparrot', 'metalparrot', 'revertitparrot', 'tripletsparrot', 'bobrossparrot', 'explodyparrot', 'fiestaparrot', 'metalparrot', 'revertitparrot', 'tripletsparrot'];
 let arraygif14 = ['bobrossparrot', 'explodyparrot', 'fiestaparrot', 'metalparrot', 'revertitparrot', 'tripletsparrot', 'unicornparrot','bobrossparrot', 'explodyparrot', 'fiestaparrot', 'metalparrot', 'revertitparrot', 'tripletsparrot', 'unicornparrot'];
-
-
-function comparador(){
-    return Math.random() - 0.5;
-}
-
 
 function numeroDeCartas(){
     
@@ -21,6 +17,72 @@ function numeroDeCartas(){
     } while (escolhaQuantidade < 4 || escolhaQuantidade > 14 || escolhaQuantidade % 2 !== 0);
     
 }
+
+
+
+let primeiraDoPar = '';
+let segundaDoPar = '';
+
+
+function fimDeJogo(){
+    const cartasviradas = document.querySelectorAll('.virar-carta');
+    if(cartasviradas.length === escolhaQuantidade){
+        alert('Você ganhou em '+contador+' jogadas!');
+    }
+}
+
+function verificar(){
+    const primeiroGif = primeiraDoPar.getAttribute('data-gif');
+    const segundoGif = segundaDoPar.getAttribute('data-gif');
+
+    if (primeiroGif === segundoGif){
+        primeiraDoPar = '';
+        segundaDoPar = '';
+        fimDeJogo()
+
+    } else{
+
+        setTimeout(() => {
+        primeiraDoPar.classList.remove('virar-carta');
+        segundaDoPar.classList.remove('virar-carta');
+
+        primeiraDoPar = '';
+        segundaDoPar = '';
+
+    }, 1000);
+}
+}
+
+
+let contador = 0;
+const virarcarta = ({target}) => {
+    
+    if (target.parentNode.className.includes('virar-carta')){
+    return;
+    }
+    
+    if (primeiraDoPar === ''){
+        target.parentNode.classList.add('virar-carta');
+        primeiraDoPar = target.parentNode;
+        contador++
+    } else if (segundaDoPar === ''){
+        target.parentNode.classList.add('virar-carta');
+        segundaDoPar = target.parentNode;
+        contador++
+
+        verificar();
+    }
+}
+
+
+
+
+function comparador(){
+    return Math.random() - 0.5;
+}
+
+
+
 
 numeroDeCartas();
 
@@ -48,6 +110,8 @@ function carregaCartas(gif) {
     carta.appendChild(front);
     carta.appendChild(back);
 
+    carta.addEventListener('click', virarcarta);
+    carta.setAttribute('data-gif', gif);
     return carta;
     
 }
@@ -114,7 +178,7 @@ const carregarJogo = () => {
    
 }
 
-carregarJogo();
+carregarJogo(); 
 
 
 
